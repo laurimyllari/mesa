@@ -974,6 +974,8 @@ intelCreateBuffer(__DRIscreen * driScrnPriv,
 
    if (mesaVis->redBits == 5)
       rgbFormat = MESA_FORMAT_B5G6R5_UNORM;
+   else if (mesaVis->redBits == 10)
+      rgbFormat = MESA_FORMAT_B10G10R10A2_UNORM;
    else if (mesaVis->sRGBCapable)
       rgbFormat = MESA_FORMAT_B8G8R8A8_SRGB;
    else if (mesaVis->alphaBits == 0)
@@ -1126,7 +1128,8 @@ intel_screen_make_configs(__DRIscreen *dri_screen)
 {
    static const mesa_format formats[] = {
       MESA_FORMAT_B5G6R5_UNORM,
-      MESA_FORMAT_B8G8R8A8_UNORM
+      MESA_FORMAT_B8G8R8A8_UNORM,
+      MESA_FORMAT_B10G10R10A2_UNORM
    };
 
    /* GLX_SWAP_COPY_OML is not supported due to page flipping. */
